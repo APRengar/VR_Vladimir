@@ -2,22 +2,17 @@ using TMPro;
 using UnityEngine;
 using Microsoft.MixedReality.Toolkit.Experimental.UI;
 
-
-
-public class NewBehaviourScript : MonoBehaviour
+public class ShowKeyboard : MonoBehaviour
 {
-    //here we select in the inspector where the text apppear
-    [SerializeField] TMP_InputField inputField;
-
-    //this inputfield is an easy way as placeholder to activate keyboard
-    private TMP_InputField activator;
+    //inputfield to interact with and print the text
+    private TMP_InputField inputField;
 
     //assigh events
     private void Start() 
     {
-        activator = GetComponent<TMP_InputField>();
-        activator.onSelect.AddListener(x => OpenKeyboard());
-        activator.onDeselect.AddListener(x => CloseKeyboard());
+        inputField = GetComponent<TMP_InputField>();
+        inputField.onSelect.AddListener(x => OpenKeyboard());
+        inputField.onDeselect.AddListener(x => CloseKeyboard());
     }
 
     //open keyboard
@@ -35,6 +30,7 @@ public class NewBehaviourScript : MonoBehaviour
         SetCaretColor(0);
     }
 
+    //function to show caret on selected and hide caret on close
     private void SetCaretColor(float value)
     {
         inputField.customCaretColor = true;
